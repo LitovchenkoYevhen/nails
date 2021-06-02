@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Цены {% endblock %}
+
+{% block tables %}
+<div class="container">
+    <table class="table caption-top">
+        <caption></caption>
+        <thead>
+        <tr>
+            <th scope="col">Тип услуги</th>
+            <th scope="col">Стоимость</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for service in service_list %}
+            {% if service.is_published %}
+                <tr>
+
+                    <td>{{ service.category_name }}</td>
+                    <td>{{ service.price }}</td>
+
+                </tr>
+            {% endif %}
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}

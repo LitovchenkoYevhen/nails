@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block adress %}                <!--  Блок с номером и адресом  -->
+{% endblock %}
+
+
+<div class="container my-5 py-5">
+    <div class="row">
+
+        {% for work in works_list %}
+
+        <div class="col-md-4 col-sm-12 mb-3">
+            <img class="w-100 rounded-3 border border-5" src="{{ work.photo_after.url }}" alt="...">
+        </div>
+        <div class="col-md-8 col-sm-12 text-center mb-3">
+            <h2>{{ step.step_name }}</h2>
+            <p class="mt-3">{{ step.content }}</p>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% block main %}
+<div class="container">
+    <div class="row mt-5">
+        {% for step in works_list %}
+        <div class="col-md-4">
+            <a href="{{ step.get_absolute_url }}"> <img src="{{ step.photo_after.url }}" class="img-fluid img-thumbnail" width="304" height="236"/>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

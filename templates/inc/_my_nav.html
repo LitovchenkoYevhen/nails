@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-sm navbar-dark  bg-dark">
+    <div class="container-fluid">
+        <a href="{% url 'services:home' %}" class="navbar-brand">KrisNails</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-0">
+                <li class="nav-item">
+                    <a href="{% url 'services:prices' %}" class="nav-link">Цены 💲</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'services:cleaning' %}" class="nav-link">Стерилизация 👩‍⚕️</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://www.instagram.com/kris_.nails/" class="nav-link">Instagram ❤️</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'services:contacts' %}" class="nav-link">Контакты 📱</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'services:works_list' %}" class="nav-link">Библиотека работ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'services:make_appointment' %}" class="nav-link">Записаться на приём</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://127.0.0.1:8000/admin" class="nav-link">Админка</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</nav>
