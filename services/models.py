@@ -22,6 +22,9 @@ class Category(models.Model):
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
 
+    def get_absolute_url(self):
+        return reverse('services:show_works_by_category', kwargs={'category_id': self.pk})
+
 
 class Additional(models.Model):
     add_name = models.CharField(max_length=150, verbose_name='Наименование услуги')
@@ -56,7 +59,7 @@ class Client(models.Model):
         ordering = []
 
     def __str__(self):
-        return str(str(self.first_name) + ' ' + str(self.last_name))
+        return str(self.first_name + ' ' + self.last_name)
 
 
 class Visit(models.Model):
@@ -74,7 +77,6 @@ class Visit(models.Model):
     photo_before = models.ImageField(upload_to='photo/visits/before/%Y/%m/%d', blank=True, verbose_name='Фото до')
     photo_after = models.ImageField(upload_to='photo/visits/after/%Y/%m/%d', blank=True, verbose_name='Фото после')
 
-
     class Meta:
         verbose_name = 'Визит'
         verbose_name_plural = 'Визиты'
@@ -84,7 +86,7 @@ class Visit(models.Model):
         return self.category.category_name
 
     def get_absolute_url(self):
-        return reverse('services:show_work', kwargs={'work_pk': self.pk})
+        return reverse('services:show_work', kwargs={'pk': self.pk})
 
 
 class Comment(models.Model):
@@ -113,7 +115,7 @@ class Cleaning(models.Model):
 
     class Meta:
         verbose_name = 'Этап очистки'
-        verbose_name_plural = 'Этапы очистки'
+        verbose_name_plural = 'Страница "Стерилизация"'
         ordering = []
 
     def __str__(self):
@@ -124,6 +126,9 @@ class VisitAsk(models.Model):
     telephone_number = models.CharField(max_length=100, verbose_name='Номер телефона')
     client_name = models.CharField(max_length=100, verbose_name='Как Вас зовут', blank=True)
     comment = models.TextField(verbose_name='Комментарий', default='123')
+    additional = models.ManyToManyField(Additional, verbose_name='Доп услуги')
+
+    # category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, verbose_name='Тип маникюра')
 
     def __str__(self):
         return self.client_name

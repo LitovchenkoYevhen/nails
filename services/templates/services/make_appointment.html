@@ -5,7 +5,7 @@
     <form action="{% url 'services:make_appointment' %}" method="post">
         {% csrf_token %}
 
-
+        {{ form.non_field.errors }}
         {{ form.as_p }}
 
 

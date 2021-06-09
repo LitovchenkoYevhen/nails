@@ -8,18 +8,24 @@ body {
 
 }
 */
-.overlay {
-    border: 1px solid #b11b4e;
-    background-color: #fcedf2;
-    height: auto;
+body {
+    background: url(https://webfon.top/wp-content/uploads/2017/10/tools.png) left top repeat fixed;
 
+}
+
+.overlay {
+    border-bottom: 1px solid rgba(177, 27, 78, 0.7);
+    border-top: 1px solid rgba(177, 27, 78, 0.7);
+    background-color: rgba(252, 237, 242, 0.7);
+    height: auto;
+    border-radius: 10px;
     line-height: 1px;
 
 }
 
 .overlay__number {
 
-    padding: 0 0 0 12px;
+
     display: block;
     max-width: 220px;
     margin: 0px auto;
@@ -32,7 +38,7 @@ body {
 
 .overlay__adress {
 
-    padding: 0;
+
     display: block;
     max-width: 220px;
     margin: 0px auto;
@@ -87,13 +93,15 @@ body {
 }
 
 .carousel-item {
+    opacity: 1;
     max-height: 50%;
+    background: linear-gradient(rgba(0,0,0,.6));
 
-    background-color: white;
 }
 
 .carousel-item img {
     max-height: 50%;
+    opacity: 1;
 
 }
 
@@ -112,9 +120,18 @@ body {
     max-width: 100%;
 
 }
-.max-size{
+
+.max-size {
     height: auto;
     max-width: 100%;
 }
+/* cleaning_list */
+.text-background{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
 
-
+/* forms.py */
+.text-background-form{
+    background-color: rgba(255, 255, 255, 0.8);
+}

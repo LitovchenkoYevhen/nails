@@ -1,18 +1,20 @@
-{% load news_tags %}
-
+{% load services_tags %}
 
 {% comment %}
-{% get_list_categories as categories %}
-<div class="list-group">
-    {% for item in categories %}
-    <a href="#" class="list-group-item list-group-item-action active"
-       aria-current="true">{{ item.category_name }} </a>
-    {% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="com-md-3">
+            <div class="list-group">
+                {% for item in category_list %}
+                <a href="#" class="list-group-item list-group-item-action active"
+                   aria-current="true">{{ item.category_name }} </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
-
-<br>
 {% endcomment %}
+<br>
 
+{% show_categories %}
 
-
-{% show_categories%}

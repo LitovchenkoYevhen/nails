@@ -19,7 +19,7 @@
 {% include 'inc/_my_nav.html' %}          <!-- Навигационная панель -->
 
 {% block adress %}                <!--  Блок с номером и адресом  -->
-    <div class="overlay">         <!--    -->
+    <div class="overlay text-center">         <!--    -->
 
 
         <p class="overlay__number">+38 (093) 339-88-18 </p>
@@ -27,6 +27,10 @@
 
     </div>
 {% endblock %}                    <!--  Блок с номером и адресом  -->
+
+{% block sidebar %}
+{% endblock %}
+
 
 {% block cleaning %}              <!--  Блок с стерилизацией  -->
 {% endblock %}                  <!--  Блок с стерилизацией  -->
@@ -49,6 +53,8 @@
 
 {% block form %}
 {% endblock %}
+
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"

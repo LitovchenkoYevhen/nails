@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-dark  bg-dark">
+<nav class="navbar navbar-expand-sm navbar-light  bg-light">
     <div class="container-fluid">
         <a href="{% url 'services:home' %}" class="navbar-brand">KrisNails</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
@@ -14,13 +14,13 @@
                     <a href="{% url 'services:cleaning' %}" class="nav-link">Стерилизация 👩‍⚕️</a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://www.instagram.com/kris_.nails/" class="nav-link">Instagram ❤️</a>
+                    <a href="https://www.instagram.com/kris_.nails/" target="_blank" class="nav-link">Instagram ❤️</a>
                 </li>
                 <li class="nav-item">
                     <a href="{% url 'services:contacts' %}" class="nav-link">Контакты 📱</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'services:works_list' %}" class="nav-link">Библиотека работ</a>
+                    <a href="{% url 'services:all_visits' %}" class="nav-link">Библиотека работ</a>
                 </li>
                 <li class="nav-item">
                     <a href="{% url 'services:make_appointment' %}" class="nav-link">Записаться на приём</a>

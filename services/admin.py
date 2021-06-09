@@ -13,8 +13,9 @@ class CleaningAdmin(admin.ModelAdmin):
     list_editable = ('is_published',)
 
 class VisitAdmin(admin.ModelAdmin):
-    list_display = ['category','client', 'work_date',]
+    list_display = ['category','client', 'work_date', 'is_published']
     list_display_links = ['category', 'client', 'work_date',]
+    list_editable = ['is_published']
 
 class VisitAskAdmin(admin.ModelAdmin):
     list_display = ['telephone_number', 'client_name']
