@@ -29,7 +29,7 @@ class Prices(ListView):
 
 
 def show_contacts(request):
-    return render(request, 'services/contacts.html')
+    return render(request, 'services/contacts.html', {'title': 'Контакты'})
 
 
 class CleaningList(ListView):
@@ -40,6 +40,7 @@ class CleaningList(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['header'] = Cleaning.objects.get(step_name='ЗАГОЛОВОК')
+        context['title'] = 'Стерилизация'
         return context
 
     def get_queryset(self):
@@ -63,7 +64,8 @@ def show_visit(request, visit_pk):
 class CreateVisit(CreateView):
     form_class = VisitAskForm
     template_name = 'services/make_appointment.html'
-    success_url = reverse_lazy('services:prices')
+    #success_url = reverse_lazy('services:prices')
+    extra_context = {'title': 'Запись на маникюр'}
 
 
 # def make_appointment(request):

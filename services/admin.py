@@ -18,7 +18,7 @@ class VisitAdmin(admin.ModelAdmin):
     list_editable = ['is_published']
 
 class VisitAskAdmin(admin.ModelAdmin):
-    list_display = ['telephone_number', 'client_name']
+    list_display = ['telephone_number', 'client_name', 'visit_date']
 
 
 admin.site.register(Category, CategoryAdmin)

@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
-
-
+import datetime
+from django.utils import timezone
 # from django.shortcuts import redirect
 
 
@@ -127,6 +127,7 @@ class VisitAsk(models.Model):
     client_name = models.CharField(max_length=100, verbose_name='Как Вас зовут', blank=True)
     comment = models.TextField(verbose_name='Комментарий', default='123')
     additional = models.ManyToManyField(Additional, verbose_name='Доп услуги')
+    visit_date = models.DateField(verbose_name='Дата визита', blank=True, default=timezone.now)
 
     # category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, verbose_name='Тип маникюра')
 

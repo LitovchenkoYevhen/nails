@@ -7,12 +7,13 @@ import re
 class VisitAskForm(forms.ModelForm):
     class Meta:
         model = VisitAsk
-        fields = ['client_name', 'telephone_number', 'comment']
+        fields = ['client_name', 'telephone_number', 'comment', 'additional', 'visit_date']
 
-    client_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'text-background-form ' 'mt-5'}))
-    telephone_number = forms.CharField(widget=forms.TextInput(attrs={'class': 'text-background-form'}))
-    comment = forms.CharField(widget=forms.Textarea(attrs={'class': 'text-background-form'}))
+    client_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'text-background-form ' 'mt-5'}), label='Ваше имя')
+    telephone_number = forms.CharField(widget=forms.TextInput(attrs={'class': 'text-background-form'}), label='Номер телефона')
+    comment = forms.CharField(widget=forms.Textarea(attrs={'class': 'text-background-form'}), label='Комментарий')
     additional = forms.ModelMultipleChoiceField(queryset=Additional.objects.all(), widget=forms.CheckboxSelectMultiple)
+    visit_date = forms.DateField(widget=forms.SelectDateWidget)
 
     def clean_telephone_number(self):
         number = self.cleaned_data['telephone_number']
@@ -20,8 +21,6 @@ class VisitAskForm(forms.ModelForm):
             return number
         else:
             raise ValidationError('Номер должен начинаться с цифры')
-
-
 
 # class VisitAskForm(forms.Form):
 #     client_name = forms.CharField(max_length=150, label='Ваше имя')

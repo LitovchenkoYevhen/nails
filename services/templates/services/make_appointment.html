@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+{{ title }}
+{% endblock %}
+
 {% block form %}
 <div class="container">
     <form action="{% url 'services:make_appointment' %}" method="post">
