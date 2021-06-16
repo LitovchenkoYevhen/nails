@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from .models import Category, Cleaning, Visit, VisitAsk
 from django.views.generic import ListView, DetailView, CreateView
 from services.forms import VisitAskForm
-from django.urls import reverse_lazy
+# from django.urls import reverse_lazy
+from django.db.models import Count
 
 
 class HomeServices(ListView):
@@ -13,6 +14,8 @@ class HomeServices(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Главная страница'
+        context['list_of_photos'] = Visit.objects.filter(is_published=True, photo_after__contains='jpg')
+
         return context
 
     def get_queryset(self):
@@ -53,7 +56,7 @@ class AllVisits(ListView):
     template_name = 'services/visits_list.html'
 
     def get_queryset(self):
-        return Visit.objects.filter(is_published=True)
+        return Visit.objects.filter(is_published=True, photo_after__contains='jpg')
 
 
 def show_visit(request, visit_pk):
@@ -64,7 +67,7 @@ def show_visit(request, visit_pk):
 class CreateVisit(CreateView):
     form_class = VisitAskForm
     template_name = 'services/make_appointment.html'
-    #success_url = reverse_lazy('services:prices')
+    # success_url = reverse_lazy('services:prices')
     extra_context = {'title': 'Запись на маникюр'}
 
 
@@ -105,10 +108,21 @@ class WorksByCategory(ListView):
     template_name = 'services/show_works_by_category.html'
 
     def get_queryset(self):
-        return Visit.objects.filter(category_id=self.kwargs['category_id'], is_published=True)
+        return Visit.objects.filter(category_id=self.kwargs['category_id'], is_published=True, photo_after__contains='jpg')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = Category.objects.get(pk=self.kwargs['category_id'])
         # context['visits_list'] = Visit.objects.filter(category_id=self.kwargs['category_id'], is_published=True)
+        return context
+
+
+class Statistic(ListView):
+    model = Category
+    context_object_name = 'statistic'
+    template_name = 'services/statistic.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cats'] = Category.objects.annotate(cnt=Count('visit'))
         return context

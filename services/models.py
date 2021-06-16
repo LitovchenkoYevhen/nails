@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-import datetime
+
 from django.utils import timezone
 # from django.shortcuts import redirect
 
@@ -13,7 +13,7 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления услуги')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
     is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
-    amount = models.IntegerField(default=0, blank=True)
+
 
     def __str__(self):
         return self.category_name
@@ -59,7 +59,7 @@ class Client(models.Model):
         ordering = []
 
     def __str__(self):
-        return str(self.first_name + ' ' + self.last_name)
+        return str(f'{self.first_name} {self.last_name}')
 
 
 class Visit(models.Model):
@@ -73,7 +73,7 @@ class Visit(models.Model):
     content = models.TextField(blank=True, verbose_name='Описание процедуры')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
-    is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
     photo_before = models.ImageField(upload_to='photo/visits/before/%Y/%m/%d', blank=True, verbose_name='Фото до')
     photo_after = models.ImageField(upload_to='photo/visits/after/%Y/%m/%d', blank=True, verbose_name='Фото после')
 

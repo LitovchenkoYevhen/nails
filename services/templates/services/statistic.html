@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block adress %}
+<div class="container">
+    <div class="row">
+        <div class="col-9 mw-100 mx-auto my-3">
+            <table class="table">
+                {% for item in cats %}
+                <tbody>
+                <tr>
+                    <th scope="row">{{ item.category_name }}</th>
+                    <td class="text-end "> {{ item.cnt }}</td>
+                </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

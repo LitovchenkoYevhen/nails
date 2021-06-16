@@ -1,9 +1,12 @@
+
 from django.contrib import admin
 from django.urls import path, include
 from . import views
 
+
 app_name = 'services'
 urlpatterns = [
+
     #  path('', views.index, name='home'),
     path('', views.HomeServices.as_view(), name='home'),
     path('prices/', views.Prices.as_view(), name='prices'),
@@ -12,6 +15,8 @@ urlpatterns = [
     # path('make_appointment/', views.make_appointment, name='make_appointment'),
     path('make_appointment/', views.CreateVisit.as_view(), name='make_appointment'),
     path('show_visit/<int:visit_pk>', views.show_visit, name='show_visit'),
+
+    path('statictic/', views.Statistic.as_view(), name='statistic'),
 
     path('works/', views.AllVisits.as_view(), name='all_visits'),
     path('works/<int:category_id>', views.WorksByCategory.as_view(), name='show_works_by_category'),
