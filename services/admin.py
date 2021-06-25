@@ -3,6 +3,18 @@ from django.utils.safestring import mark_safe
 
 from .models import Category, Cleaning, Visit, Client, Additional, VisitAsk
 
+from django import forms
+from ckeditor.widgets import CKEditorWidget
+
+class VisitAskAdminForm(forms.ModelForm):
+    comment = forms.CharField(widget=CKEditorWidget())
+    class Meta:
+        model = VisitAsk
+        fields = '__all__'
+
+
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('category_name', 'content', 'updated_at', 'price', 'is_published')
     list_display_links = ('category_name', 'content', 'price')
@@ -26,7 +38,7 @@ class VisitAdmin(admin.ModelAdmin):
         ('Фотографии:', {'fields': ('photo_before', 'photo_after', 'get_photo')}),
         ('Остальная информация', {'fields': ('created_at', 'updated_at', 'is_published')}),
     ]
-    
+
 
     def get_photo(self, obj):
         if obj.photo_after:
@@ -36,6 +48,7 @@ class VisitAdmin(admin.ModelAdmin):
     get_photo.short_description = 'Фотография'
 
 class VisitAskAdmin(admin.ModelAdmin):
+    form = VisitAskAdminForm
     list_display = ('telephone_number', 'client_name', 'visit_date')
 
 
@@ -45,6 +58,8 @@ admin.site.register(Visit, VisitAdmin)
 admin.site.register(Client)
 admin.site.register(Additional)
 admin.site.register(VisitAsk, VisitAskAdmin)
+
+
 
 admin.site.site_title = 'Админка'
 admin.site.site_header = 'Админка'

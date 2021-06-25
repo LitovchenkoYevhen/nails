@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <a href="{% url 'services:home' %}" class="navbar-brand">KrisNails</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
-                aria-controls="navbarContent" aria-expanded="false" >
+                aria-controls="navbarContent" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
@@ -26,14 +26,30 @@
                     <a href="{% url 'services:make_appointment' %}" class="nav-link">Записаться на приём</a>
                 </li>
                 <li class="nav-item">
+                    <a href="{% url 'services:contact' %}" class="nav-link">Обратная связь</a>
+                </li>
+                {% if request.user.is_superuser %}
+                <li class="nav-item">
                     <a href="http://127.0.0.1:8000/admin" class="nav-link">Админка</a>
                 </li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
                 <li class="nav-item">
                     <a href="{% url 'services:statistic' %}" class="nav-link">Cтатистика</a>
                 </li>
+                {% endif %}
             </ul>
-
+            {% if request.user.is_authenticated %}
+            <span class="navbar-text">
+                <a href="{% url 'services:logout' %}">Выход</a>
+            </span>
+            {% else %}
+            <span class="navbar-text">
+                <a href="{% url 'services:register' %}">Регистрация</a> | <a href="{% url 'services:login' %}">Вход</a>
+            </span>
+            {% endif %}
         </div>
+
     </div>
 
 </nav>

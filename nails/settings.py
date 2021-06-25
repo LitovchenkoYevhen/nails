@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.conf.global_settings import EMAIL_USE_TLS, EMAIL_USE_SSL, EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -38,7 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'ckeditor',
+    'ckeditor_uploader',
     'services.apps.ServicesConfig',
+    'captcha',
+
 
 ]
 
@@ -133,3 +139,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 INTERNAL_IPS = ['127.0.0.1', ]
+
+EMAIL_HOST = 'smtp.ukr.net'
+EMAIL_PORT = 465  # 2565
+EMAIL_HOST_USER = 'krisnails@ukr.net'
+EMAIL_HOST_PASSWORD = 'QyjPagIt6TZTDGEx1'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+CKEDITOR_UPLOAD_PATH = "uploads/"

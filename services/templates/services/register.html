@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block adress %}
+{% endblock %}
+
+{% block login %}
+<div class="container">
+    <div class="row">
+        <div class="col-9 mw-100 mx-auto my-3">
+
+            <h1>Регистрация</h1>
+
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.non_field.errors }}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary ">Регистрация</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

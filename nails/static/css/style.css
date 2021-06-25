@@ -135,3 +135,6 @@ body {
 .text-background-form{
     background-color: rgba(255, 255, 255, 0.8);
 }
+ul.errorlist{
+    color: red;
+}

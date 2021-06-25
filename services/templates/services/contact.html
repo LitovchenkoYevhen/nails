@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block form %}
+<div class="container">
+    <form action="{% url 'services:contact' %}" method="post">
+        {% if message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+        {% csrf_token %}
+
+        {{ form.non_field.errors }}
+        {{ form.as_p }}
+
+
+        <button type="submit" class="btn btn-primary ">Отправить</button>
+    </form>
+</div>
+
+{% endblock %}

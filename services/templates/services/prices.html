@@ -16,14 +16,14 @@
         <tbody>
 
         {% for service in service_list %}
-            {% if service.is_published %}
+
                 <tr>
 
                     <td>{{ service.category_name }}</td>
                     <td>{{ service.price }}</td>
 
                 </tr>
-            {% endif %}
+
         {% endfor %}
 
         </tbody>
